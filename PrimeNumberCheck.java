@@ -1,39 +1,27 @@
-import java.util.Scanner;
-
 public class PrimeNumberCheck {
-    public static void main(String[] args) {
-        // Scanner to read input
-        Scanner scanner = new Scanner(System.in);
-        
-        // Read the number to check
-        System.out.print("Enter a number: ");
-        int n = scanner.nextInt();
-        
-        // Check if the number is prime
-        if (isPrime(n)) {
-            System.out.println(n + " is a prime number.");
-        } else {
-            System.out.println(n + " is not a prime number.");
-        }
-        
-        // Close the scanner
-        scanner.close();
-    }
 
-    // Method to check if a number is prime
-    public static boolean isPrime(int n) {
-        // A prime number is greater than 1 and is divisible only by 1 and itself
-        if (n <= 1) {
-            return false;
+    // Function to check if a number is prime
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false; // Numbers less than or equal to 1 are not prime
         }
-
-        // Check divisibility from 2 to the square root of n
-        for (int i = 2; i * i <= n; i++) {
-            if (n % i == 0) {
-                return false; // Found a divisor, so n is not prime
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false; // If divisible by any number, it's not prime
             }
         }
+        return true; // If no divisors were found, it is prime
+    }
 
-        return true; // No divisors found, so n is prime
+    public static void main(String[] args) {
+        // Predefined number to check (this is where the "user-defined" input is in the code)
+        int number = 29;  // You can change this value to any number you'd like to check
+
+        // Check if the number is prime and print the result
+        if (isPrime(number)) {
+            System.out.println(number + " is a prime number.");
+        } else {
+            System.out.println(number + " is not a prime number.");
+        }
     }
 }
